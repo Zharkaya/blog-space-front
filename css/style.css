@@ -419,6 +419,7 @@ Needed for proper display in IE 10-.
     --bg-color: #F9F4EC;
     --text-color: #201F1F;
     --acent-text-color: #EE5626;
+    --gradient: linear-gradient(180deg, #EE5626 50.52%, #35109F 89.58%);
 }
 
 body {
@@ -432,8 +433,72 @@ header {
     top: 0;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button, .btn {
+  display: block;
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  width:110px;
+  text-align: center;
+}
+
 .container {
     max-width:1480px;
     width: 100%;
     margin: auto;
+}
+
+.logo {
+  color: var(--acent-text-color);
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.logo .logo-in {
+  margin-right: 15px;
+  color: var(--text-color);
+  border: 2px solid transparent;
+  padding-left: 9px;
+  height: 40px;
+  width:40px;
+  position: relative;
+}
+.logo .logo-in::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px; 
+  padding: 2px; 
+  background:var(--gradient);
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; 
+}
+
+.toggle {
+  height: 24px;
+  width: 45px;
+  background-color: var(--text-color);
+  position: relative;
+  border-radius: 95px;
+}
+
+.toggle-btn {
+  background-color: var(--bg-color);
+  height: 15px;
+  width: 15px;
+  border-radius: 555px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
