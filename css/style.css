@@ -420,6 +420,7 @@ Needed for proper display in IE 10-.
     --text-color: #201F1F;
     --acent-text-color: #EE5626;
     --gradient: linear-gradient(180deg, #EE5626 50.52%, #35109F 89.58%);
+    --hover-gradient: linear-gradient(360deg, #EE5626 50.52%, #35109F 89.58%);
 }
 
 body {
@@ -441,10 +442,63 @@ header {
 
 button, .btn {
   display: block;
+  background: #fff0;
   border: 1px solid var(--text-color);
-  border-radius: 5px;
+  border-radius: 8px;
   width:110px;
+  height: 35px;
   text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  position: relative;
+}
+
+.btn {
+  padding-top: 4px;
+}
+
+button:focus-visible{
+  outline: none;
+}
+
+.btn-up::after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-image: url(../img/ico/ArrowUp.svg);
+  position: relative;
+  top: 3px;
+  left: 5px;
+  transition: 0.5s;
+}
+
+.btn-up:hover:after {
+  transform: translateY(-0.4rem);
+}
+
+.btn-gradient{
+  border: 2px solid transparent;
+  transition: 1s;
+}
+
+.btn-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px; 
+  padding: 2px; 
+  background-image:var(--gradient);
+  -webkit-mask: 
+     linear-gradient(#fff 0 0) content-box, 
+     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  transition: 1s;        
+}
+
+.btn-gradient:hover::before{
+  background-image:var(--hover-gradient);
 }
 
 .container {
