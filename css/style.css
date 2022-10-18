@@ -474,7 +474,17 @@ button:focus-visible{
 }
 
 .btn-up:hover:after {
-  transform: translateY(-0.4rem);
+  /*transform: translateY(-0.4rem);*/
+  animation: updown 0.8s infinite linear;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-0.4rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
 }
 
 .btn-gradient{
@@ -545,6 +555,7 @@ button:focus-visible{
   background-color: var(--text-color);
   position: relative;
   border-radius: 95px;
+  cursor: pointer;
 }
 
 .toggle-btn {
