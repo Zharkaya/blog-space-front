@@ -480,6 +480,12 @@ header {
     align-items: center;
 }
 
+article header {
+  background-color: transparent;
+  position: inherit;
+  padding: 0;
+}
+
 a {
   color: var(--text-color);
 }
@@ -701,6 +707,8 @@ button:focus-visible{
 
 .post-img {
   margin-top: 1em;
+  min-height: 170px;
+  width: 100%;
 }
 
 .post-img img{
