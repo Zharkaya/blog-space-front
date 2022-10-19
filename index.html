@@ -183,14 +183,37 @@
         percentPosition: true,                      
     });
 
-    function DarkMode(){
-        let toggleMode = document.querySelector('#toggleMode');
+    function DarkModeToggle(){      
+        var darkMode = false;
         let html = document.querySelector('html');
-        toggleMode.addEventListener('click', () => {            
+
+        // default to system setting
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            darkMode = true;
+        }
+
+        // preference from localStorage should overwrite
+        if (localStorage.getItem('theme') === 'dark') {
+            darkMode = true;
+        } else if (localStorage.getItem('theme') === 'light') {
+            darkMode = false;
+        }
+
+        if (darkMode) {
             html.classList.toggle('dark-mode');
-            toggleMode.classList.toggle('dark-active');
-        })
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            document.getElementById('toggleMode').addEventListener('click', () => {
+                html.classList.toggle('dark-mode');                
+                localStorage.setItem('theme', html.classList.contains('dark-mode') ? 'dark' : 'light');
+            });
+
+        });
     }
-    DarkMode();
+
+    DarkModeToggle();
+
 </script>
 </html>

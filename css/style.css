@@ -419,19 +419,18 @@ Needed for proper display in IE 10-.
 :root {
     /* ligth */
     --bg-color: #F9F4EC;
-    --text-color: #201F1F;   
+    --text-color: #201F1F;
+    --gradient: linear-gradient(180deg, #EE5626 50.52%, #35109F 89.58%);
+    --hover-gradient: linear-gradient(360deg, #EE5626 50.52%, #35109F 89.58%);  
 
     /*dark*/
     --d-bg-color: #201F1F;
     --d-text-color: #F9F4EC;
+    --d-gradient: linear-gradient(180deg, #EE5626 50.52%, #00e7ff 89.58%);
+    --d-hover-gradient: linear-gradient(360deg, #EE5626 50.52%, #00e7ff 89.58%); 
 
-    --acent-text-color: #EE5626;
-
-    --gradient: linear-gradient(180deg, #EE5626 50.52%, #35109F 89.58%);
-    --hover-gradient: linear-gradient(360deg, #EE5626 50.52%, #35109F 89.58%);
-
+    --acent-text-color: #EE5626;  
     --width-col: 25%;
-
     --padding-y: 1rem 0;
 }
 
@@ -567,9 +566,16 @@ button:focus-visible{
           mask-composite: exclude;
   transition: 1s;        
 }
+.dark-mode .btn-gradient::before {
+  background-image:var(--d-gradient);
+}
 
 .btn-gradient:hover::before{
   background-image:var(--hover-gradient);
+}
+
+.dark-mode .btn-gradient:hover::before{
+  background-image:var(--d-hover-gradient);
 }
 
 .container {
@@ -624,6 +630,15 @@ button:focus-visible{
 .logo:hover .logo-in:before{
   background:var(--hover-gradient);
 }
+.dark-mode .logo .logo-in::before {
+  background:var(--d-gradient);
+}
+
+.dark-mode .logo:hover .logo-in:before{
+  background:var(--d-hover-gradient);
+}
+
+
 .logo a {
   position: absolute;
   width: 100%;
@@ -649,14 +664,13 @@ button:focus-visible{
   height: 15px;
   width: 15px;
   border-radius: 555px;
-  position: absolute;  
-  right: 5px;  
-  top: 5px;  
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
-.dark-active .toggle-btn {
-  right: 0;
-  left: 5px;
+.dark-mode .toggle-btn {
+  left:5px;    
 }
 
 .h1-index {
@@ -664,7 +678,7 @@ button:focus-visible{
   text-decoration: underline;
 }
 .posts {
-  margin-top: 2em;  
+  margin: 2em 0;  
 }
 
 .post-col {
@@ -723,9 +737,7 @@ button:focus-visible{
 }
 footer {
   padding: var(--padding-y);
-  background: var(--bg-color);
-  position: sticky;
-  bottom: 0;
+  background: var(--bg-color); 
   font-weight: 600;
 }
 
