@@ -13,9 +13,10 @@
         <div class="container">                       
             <div class="header">
                 <div class="logo">
+                    <a href="/"></a>
                     <div class="logo-in">G</div> Logo
                 </div>
-                <div class="toggle">
+                <div class="toggle" id="toggleMode">
                     <div class="toggle-btn"></div>
                 </div>
             </div>
@@ -160,14 +161,36 @@
             </div>
         </div>
     </main>
-    <script>
-        var elem = document.querySelector('.posts');
-        var msnry = new Masonry( elem, {
-        // options
-            itemSelector: '.post-col',     
-            columnWidth: '.post-col',
-            percentPosition: true,                      
-        });
-    </script>
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="">Thanks for <span class="text-acent text-underline">coming!</span></div>
+                <div class="email text-underline"><a href="mail:zharkayata@gmail.com">zharkayata@gmail.com</a></div>
+                <div class="social">
+                    <a href="#" class="tw"></a>
+                    <a href="#" class="git"></a>
+                    <a href="#" class="figma"></a>
+                </div>
+            </div>
+        </div>
+    </footer>    
 </body>
+<script>
+    var elem = document.querySelector('.posts');
+    var msnry = new Masonry( elem, {        
+        itemSelector: '.post-col',     
+        columnWidth: '.post-col',
+        percentPosition: true,                      
+    });
+
+    function DarkMode(){
+        let toggleMode = document.querySelector('#toggleMode');
+        let html = document.querySelector('html');
+        toggleMode.addEventListener('click', () => {            
+            html.classList.toggle('dark-mode');
+            toggleMode.classList.toggle('dark-active');
+        })
+    }
+    DarkMode();
+</script>
 </html>
