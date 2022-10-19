@@ -421,6 +421,8 @@ Needed for proper display in IE 10-.
     --acent-text-color: #EE5626;
     --gradient: linear-gradient(180deg, #EE5626 50.52%, #35109F 89.58%);
     --hover-gradient: linear-gradient(360deg, #EE5626 50.52%, #35109F 89.58%);
+    --width-col-min: 20%;
+    --width-col-max: 25%;
 }
 
 body {
@@ -429,8 +431,10 @@ body {
 }
 
 header {
+    background-color: var(--bg-color);
     padding: 2em 0;
     position: sticky;
+    z-index: 10;
     top: 0;
 }
 
@@ -566,4 +570,67 @@ button:focus-visible{
   position: absolute;
   right: 5px;
   top: 5px;
+}
+.h1-index {
+  text-align: center;
+  text-decoration: underline;
+}
+.posts {
+  margin-top: 2em;  
+}
+
+.post-col {
+  padding: 0px 14px 5px 24px;
+  border-right: 1px solid rgba(185, 185, 185, 0.4);   
+}
+.post-sizer, .post-col{
+  width: var(--width-col-max);
+  /* width: 210px; */
+}
+
+.post-item {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(185, 185, 185, 0.4); 
+}
+
+.post-img img{
+  width:100%;
+}
+
+.title{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2em;
+  font-weight: 700;
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1em;
+}
+.author {
+  display: flex;
+}
+
+.author-img {
+  background-color: var(--text-color);
+  width:2.8rem;
+  height: 2.8rem;
+  border-radius: 5px;
+  position: relative;
+}
+
+.author-img img {
+  object-fit: contain;
+  width: 2.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 3px; 
+}
+.author-info{
+  margin-left: 1em;
+}
+.author-name {
+  font-weight: 700;
+}
+.data {
+  font-size: 0.7em;
+  font-weight: 400;
 }
