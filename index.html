@@ -49,7 +49,7 @@
                     <div class="post-item">
                         <header>
                         <div class="post-img">
-                            <img src="./img/tmp-img/img-p.png" alt="" srcset="">
+                            <img src="https://loremflickr.com/g/300/170/abstract" alt="" srcset="">
                         </div>                        
                         <h4 class="title">2Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, excepturi?</h4>
                         </header>
@@ -73,7 +73,7 @@
                     <div class="post-item">
                         <header>
                         <div class="post-img">
-                            <img src="./img/tmp-img/im-p1.png" alt="" srcset="">
+                            <img src="https://loremflickr.com/g/300/170/black-cat" alt="" srcset="">
                         </div>
                         <h4 class="title">3Lorem ipsum dolor sit amet.</h4>
                         </header>
@@ -123,7 +123,7 @@
                 <article class="post-col">
                     <div class="post-item">
                         <header>
-                            <div class="post-img"><img src="./img/tmp-img/img-p-1.png" alt="" srcset=""></div>                       
+                            <div class="post-img"><img src="https://loremflickr.com/g/300/170/nature" alt="" srcset=""></div>                       
                             <h4 class="title">6 Lorem ipsum dolor sit.</h4>
                         </header>
                         <p>
@@ -157,7 +157,7 @@
                     <div class="post-item">
                         <header>
                             <div class="post-img">
-                                <img src="./img/tmp-img/im-p1.png" alt="" srcset="">
+                                <img src="https://loremflickr.com/g/300/170/black-sky" alt="" srcset="">
                             </div>                                                               
                             <h4 class="title">8 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ullam praesentium, numquam quasi corporis consequuntur!</h4>
                         </header>
@@ -198,33 +198,25 @@
     });
 
     function DarkModeToggle(){      
-        var darkMode = false;
-        let html = document.querySelector('html');
+        var toggle = document.getElementById("toggleMode");
 
-        // default to system setting
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            darkMode = true;
-        }
+        var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (storedTheme)
+            document.documentElement.setAttribute('data-theme', storedTheme)
 
-        // preference from localStorage should overwrite
-        if (localStorage.getItem('theme') === 'dark') {
-            darkMode = true;
-        } else if (localStorage.getItem('theme') === 'light') {
-            darkMode = false;
-        }
 
-        if (darkMode) {
-            html.classList.toggle('dark-mode');
-        }
+        toggle.onclick = function() {
+            var currentTheme = document.documentElement.getAttribute("data-theme");
+            var targetTheme = "light";
 
-        document.addEventListener('DOMContentLoaded', () => {
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+            }
 
-            document.getElementById('toggleMode').addEventListener('click', () => {
-                html.classList.toggle('dark-mode');                
-                localStorage.setItem('theme', html.classList.contains('dark-mode') ? 'dark' : 'light');
-            });
+            document.documentElement.setAttribute('data-theme', targetTheme)
+            localStorage.setItem('theme', targetTheme);
+        };
 
-        });
     }
 
     DarkModeToggle();
