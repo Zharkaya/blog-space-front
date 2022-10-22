@@ -431,6 +431,9 @@ Needed for proper display in IE 10-.
     --acent-text-color: #EE5626;  
     --width-col: 25%;
     --padding-y: 1rem 0;
+    --padding-y-content: 3rem 0;
+    --transition: width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s, color 0.5s;
+
 }
 
 @media (max-width:1080px) {
@@ -465,6 +468,7 @@ html[data-theme='dark'] {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    transition: var(--transition);
 }
 
 header {
@@ -473,12 +477,30 @@ header {
     position: sticky;
     z-index: 10;
     top: 0;
+    min-height: 3em;
+    transition: var(--transition);
+}
+
+main {
+  min-height: calc(100vh - 140px);
+}
+
+footer {
+  padding: var(--padding-y);
+  background: var(--bg-color); 
+  font-weight: 600;
+  min-height: 3em; 
+  transition: var(--transition);
+}
+
+footer a {
+  font-weight: 600;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
 }
 
 article header {
@@ -487,8 +509,13 @@ article header {
   padding: 0;
 }
 
+p {
+  transition: var(--transition);
+}
+
 a {
   color: var(--text-color);
+  transition: var(--transition);
 }
 a:hover{
   color: var(--text-color);
@@ -503,6 +530,14 @@ a:hover{
   text-decoration: underline;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
 button, .btn {
   display: block;
   background: #fff0;
@@ -514,6 +549,7 @@ button, .btn {
   cursor: pointer;
   font-weight: 600;
   position: relative;
+  transition: var(--transition);
 }
 
 .btn {
@@ -533,7 +569,7 @@ button:focus-visible{
   position: relative;
   top: 3px;
   left: 5px;
-  transition: 0.5s;
+  transition: var(--transition);
 }
 
 .btn-up:hover:after {  
@@ -551,7 +587,7 @@ button:focus-visible{
 
 .btn-gradient{
   border: 2px solid transparent;
-  transition: 1s;
+  transition: var(--transition);
 }
 
 .btn-gradient::before {
@@ -585,6 +621,16 @@ button:focus-visible{
   }
 }
 
+.container-content {
+  max-width: 800px;
+}
+
+@media (max-width:800px){    
+  .container-content {
+    max-width: calc(100% - 2rem);  
+  }
+}
+
 .logo {
   color: var(--acent-text-color);
   text-transform: uppercase;
@@ -603,6 +649,7 @@ button:focus-visible{
   height: 40px;
   width:40px;
   position: relative;
+  transition: var(--transition);
 }
 
 .logo .logo-in::before {
@@ -636,11 +683,13 @@ button:focus-visible{
   position: relative;
   border-radius: 95px;
   cursor: pointer;
+  transition: var(--transition);
 }
 
 html[data-theme='dark'] .toggle{ 
   box-shadow: 0 0 10px var(--acent-text-color);
   background-color: var(--bg-color);
+  transition: var(--transition);
 }
 
 .toggle-btn {
@@ -699,7 +748,8 @@ html[data-theme='dark'] .toggle-btn {
 }
 .author {
   display: flex;
-  padding-bottom: 0.5em;  
+  padding-bottom: 0.5em; 
+  transition: 1s; 
 }
 
 .author-img {
@@ -708,6 +758,7 @@ html[data-theme='dark'] .toggle-btn {
   height: 2.8rem;
   border-radius: 5px;
   position: relative;
+  transition: var(--transition);
 }
 
 .author-img img {
@@ -718,7 +769,7 @@ html[data-theme='dark'] .toggle-btn {
   left: 3px; 
 }
 .author-info{
-  margin-left: 1em;
+  margin-left: 1em;  
 }
 .author-name {
   font-weight: 700;
@@ -726,15 +777,7 @@ html[data-theme='dark'] .toggle-btn {
 .data {
   font-size: 0.7em;
   font-weight: 400;
-}
-footer {
-  padding: var(--padding-y);
-  background: var(--bg-color); 
-  font-weight: 600;
-}
-
-footer a {
-  font-weight: 600;
+  transition: var(--transition);
 }
 .footer-inner {
   display: flex;
@@ -754,7 +797,7 @@ footer a {
 }
 
 .social .tw{
-  background-image: var(--tw-bg)
+  background-image: var(--tw-bg);  
 }
 
 .social .git{
@@ -775,3 +818,48 @@ footer a {
   }
 }
  
+.content {
+  padding: var(--padding-y-content);
+}
+
+.content h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+.content h1:hover {
+  color: var(--acent-text-color);
+}
+
+.dot {
+  padding: var(--padding-y-content);
+  display: inline-flex;
+}
+.dot span {
+  display: block;
+  height:0.5em;
+  width:0.5em;
+  background-color: var(--text-color);
+  border-radius: 555px;
+  transition: 1s;
+}
+.dot span:not(:first-child){
+  margin-left:1em;
+}
+
+.dot:hover span {
+  background-image: var(--gradient);
+}
+
+.content-img {
+  height: 100%;
+}
+
+.content-img img {
+  width:100%;
+}
+
+.content-text{
+  padding: var(--padding-y-content);
+}
